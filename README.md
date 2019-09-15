@@ -32,7 +32,7 @@ particleText（）の（）の中に描画したい文字列を入れる。
 		// オプション
 		$("#particle").particleText({
 
-		    text: "PARTICLE ♡", // 文字列
+		    text: "PARTICLE", // 文字列
 
 		    colors:["#000","#fff"], // パーティクルの色を配列で複数指定可能
 
