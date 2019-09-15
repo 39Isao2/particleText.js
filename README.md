@@ -1,6 +1,12 @@
 # particleText.js
 パーティクルで文字を描画します。
 
+<img src="http://hareumi.com/particleText/particle.jpg" width="150px">
+
+DEMO
+http://hareumi.girlfriend.jp/particleText/
+
+
 ## 1.描画するcanvasタグの準備
 id="particle"を指定。
 
