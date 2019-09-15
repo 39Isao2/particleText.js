@@ -43,4 +43,4 @@ particleText（）の（）の中に描画したい文字列を入れる。
 		});
 
 	});
-</script>
+    </script>
