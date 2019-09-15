@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>particleText</title>
+<style>
+canvas{
+  background: #F5F1E9;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle"></canvas>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="particleText.js"></script>
+
+
+<script type="text/javascript">
+	$(function(){
+
+
+		// 一番シンプル
+		//$(".particle").particleText("PARTICLE");
+
+		// オプション付き
+		$("#particle").particleText({
+
+		    text: "PARTICLE ♡", // 文字
+
+		    //colors:["#000","#fff"], // パーティクルの色を複数指定可能
+
+		    min:1,  // パーティクルのサイズ 0.5 ~ 5 がおすすめ
+
+		    max:4,
+
+		});
+
+
+	});
+</script>
+</body>
+</html>
