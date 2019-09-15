@@ -1,7 +1,7 @@
 # particleText.js
 パーティクルで文字を描画します。
 
-<img src="http://hareumi.com/particleText/particle.jpg" width="150px">
+<img src="http://hareumi.com/particleText/particle.jpg">
 
 DEMO
 http://hareumi.girlfriend.jp/particleText/
