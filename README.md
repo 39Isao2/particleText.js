@@ -3,8 +3,11 @@
 
 <img src="http://hareumi.com/particleText/particle.jpg" width="400px">
 
-DEMO
+DEMOカラフル
 http://hareumi.girlfriend.jp/particleText/
+
+DEMO白黒
+http://hareumi.girlfriend.jp/particleText/index2.html
 
 
 ## 1.描画するcanvasタグの準備
