@@ -18,7 +18,7 @@
 canvas{
 	width:100vw;
     height: 100vh;
-	background: #F5F1E9;
+	background: #000;
 	display: block;
 	margin: 0 auto;
 }
@@ -38,20 +38,20 @@ canvas{
 
 
 		// 一番シンプル
-		$("#particle").particleText("PARTICLE ♡");
+		// $("#particle").particleText("PARTICLE ♡");
 
 		//オプション付き
-		// $("#particle").particleText({
+		$("#particle").particleText({
 
-		//     //text: "PARTICLE ♡", // 文字
+		    text: "PARTICLE ♡", // 文字
 
-		//     //colors:["#000","#fff"], // パーティクルの色を複数指定可能
+		    colors:["#fff"], // パーティクルの色を複数指定可能
 
-		//     // min:1,  // パーティクルのサイズ 0.5 ~ 5 がおすすめ
+		    // min:1,  // パーティクルのサイズ 0.5 ~ 5 がおすすめ
 
-		//     // max:4,
+		    // max:4,
 
-		// });
+		});
 
 
 	});
