@@ -8,11 +8,6 @@
 			// 描画機能有効に
 			var ctx = canvas.getContext("2d");
 
-			// console.log(canvas.clientWidth);
-			// console.log(canvas.clientHeight);
-
-			//console.log(canvas.clientWidth);
-
 			// canvasサイズ取得
 			var ww = canvas.width = canvas.clientWidth;
 			var wh = canvas.height = canvas.clientHeight;
@@ -65,12 +60,7 @@
 			    this.r =  Math.floor( Math.random() * (max + 1 - min) ) + min ;
 
 			    // 画面サイズにて半径調整
-			    // よう調整
 			    this.r = window.innerWidth / this.r * 0.003;
-
-			    // if(ww < 768){
-			    // 	this.r = Math.round(this.r/2);
-			    // }
 
 			    // カラー設定
 			    this.color = colors[Math.floor(Math.random()*6)];
@@ -95,28 +85,9 @@
 			// シーン初期化
 			function initScene(){
 
-			    // キャンバス初期化
-			    // ww = canvas.width = window.innerWidth;
-			    // wh = canvas.height = window.innerHeight;
-
-				// canvaアクセス
-				//var canvas = document.querySelector("#particle");
-
+				// キャンバスサイズ取得
 				var ww = canvas.width = canvas.clientWidth;
 			    var wh = canvas.height = canvas.clientHeight;
-
-
-
-				//var ctx = canvas.getContext("2d");
-
-			
-				// var ww = canvas.clientWidth;
-				// var wh = canvas.clientHeight;
-
-			 //   	var ww = canvas.width = 377;
-				// var wh = canvas.height = 500;
-			 //    var ww = canvas.clientWidth;
-				// var wh = canvas.clientHeight;
 
 
 			    ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -147,7 +118,7 @@
 
 			    // パーティクル配列突っ込む
 			    num = particles.length;
-
+			    
 			}
 
 
