@@ -8,17 +8,19 @@
 			// 描画機能有効に
 			var ctx = canvas.getContext("2d");
 
-			// テキストの内容取得
-			var copy = document.querySelector("#copy");
+			// console.log(canvas.clientWidth);
+			// console.log(canvas.clientHeight);
+
+			//console.log(canvas.clientWidth);
 
 			// canvasサイズ取得
-			var ww = canvas.width = window.innerWidth;
-			var wh = canvas.height = window.innerHeight;
+			var ww = canvas.width = canvas.clientWidth;
+			var wh = canvas.height = canvas.clientHeight;
 
 			// オプション取得
   			var text = "";
-  			var minSize = 1;
-  			var maxSize = 4;
+  			var minSize = 2;
+  			var maxSize = 2;
 
   			// text
   			if(options.text){
@@ -42,17 +44,19 @@
   			}
 
 			// パーティクルclass初期化
-			var particles = [],amount = 0,radius = 0;
+			var particles = [],num = 0;
+
 			// パーティクルclass
-			function Particle(x,y){
+			function Particle(ax,ay){
+
 				// ランダムで初期位置決定
 			    this.x =  Math.random()*ww;
 			    this.y =  Math.random()*wh;
 
-			    // ディスタンス
-			    this.dest = {
-			        x : x,
-			        y: y
+			    // ゴールポジション
+			    this.goal = {
+			        x : ax,
+			        y: ay
 			    };
 
 			    //  ランダムでmin-maxの間でサイズ決定
@@ -60,16 +64,13 @@
 				var max = maxSize;
 			    this.r =  Math.floor( Math.random() * (max + 1 - min) ) + min ;
 
-			    //速度
-			    this.vx = (Math.random()-0.5)*20;
-			    this.vy = (Math.random()-0.5)*20;
+			    // 画面サイズにて半径調整
+			    // よう調整
+			    this.r = window.innerWidth / this.r * 0.003;
 
-			    // 加速度
-			    this.accX = 10;
-			    this.accY = 10;
-
-			    // 摩擦
-			    this.friction = Math.random()*0.05 + 0.94;
+			    // if(ww < 768){
+			    // 	this.r = Math.round(this.r/2);
+			    // }
 
 			    // カラー設定
 			    this.color = colors[Math.floor(Math.random()*6)];
@@ -79,39 +80,14 @@
 			// レンダリング
 			Particle.prototype.render = function() {
 
-				// 毎フレーム位置の計算
-				// イージング？
-				// nowValue += (targetValue - nowValue) * 0.03;
-			　　 this.accX = (this.dest.x - this.x)/1000;
-			    this.accY = (this.dest.y - this.y)/1000;
-			    this.vx += this.accX;
-			    this.vy += this.accY;
-
-			    // 摩擦を加える
-			    this.vx *= this.friction;
-			    this.vy *= this.friction;
-
-			    // 速度計算
-			    this.x += this.vx;
-			    this.y += this.vy;
-
+			    this.x += (this.goal.x - this.x) * 0.08;
+			    this.y += (this.goal.y - this.y) * 0.08;
+				
 			    // 描画
 				ctx.fillStyle = this.color;
 			    ctx.beginPath();
 				ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
 			    ctx.fill();
-
-			    // 2点間の距離の差分計算
-			    var distance = Math.sqrt( this.x * this.x + this.y * this.y );
-
-			    // 距離が0より小さくなるまでうにゃうにゃ？
-			    // if(distance < 0) { 
-			    if(distance < (radius*70) ) { 
-			        this.accX = this.x/100;
-			        this.accY = this.y/100;
-			        this.vx += this.accX;
-			        this.vy += this.accY;
-			    }
 
 			}
 
@@ -120,8 +96,29 @@
 			function initScene(){
 
 			    // キャンバス初期化
-			    ww = canvas.width = window.innerWidth;
-			    wh = canvas.height = window.innerHeight;
+			    // ww = canvas.width = window.innerWidth;
+			    // wh = canvas.height = window.innerHeight;
+
+				// canvaアクセス
+				//var canvas = document.querySelector("#particle");
+
+				var ww = canvas.width = canvas.clientWidth;
+			    var wh = canvas.height = canvas.clientHeight;
+
+
+
+				//var ctx = canvas.getContext("2d");
+
+			
+				// var ww = canvas.clientWidth;
+				// var wh = canvas.clientHeight;
+
+			 //   	var ww = canvas.width = 377;
+				// var wh = canvas.height = 500;
+			 //    var ww = canvas.clientWidth;
+				// var wh = canvas.clientHeight;
+
+
 			    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 			    // フォントとテキスト表示 中央揃え
@@ -132,6 +129,7 @@
 
 			    // 領域全部のImageDataオブジェクト取得
 			    var data  = ctx.getImageData(0, 0, ww, wh).data;
+			    //console.log(data);
 			    ctx.clearRect(0, 0, canvas.width, canvas.height);
 			    // 重なった際にsource-overモードに
 			    ctx.globalCompositeOperation = "source-over";
@@ -139,16 +137,16 @@
 			    // パーティクル初期化
 			    particles = [];
 
-			    // 読解むずす
-			    for(var i=0;i<ww;i+=Math.round(ww/300)){
-			        for(var j=0;j<wh;j+=Math.round(ww/300)){
+			    for(var i=0; i<ww; i+=Math.round(ww/300)){
+			        for(var j=0;j<wh; j+=Math.round(ww/300)){
 			            if(data[ ((i + j*ww)*4) + 3] > 150){
 			                particles.push(new Particle(i,j));
 			            }
 			        }
 			    }
+
 			    // パーティクル配列突っ込む
-			    amount = particles.length;
+			    num = particles.length;
 
 			}
 
@@ -160,7 +158,7 @@
 			    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 			    // パーティクルの数描画
-			    for (var i = 0; i < amount; i++) {
+			    for (var i = 0; i < num; i++) {
 			        particles[i].render();
 			    }
 			};
