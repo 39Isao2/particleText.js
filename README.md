@@ -40,12 +40,15 @@ particleText（)の中に描画したい文字列を入れる。
 
 		// オプション
 		$("#particle").particleText({
+		
+　　　　　　　　　　　　// 表示させたいテキスト
+		    text: "PARTICLE ♡", 
+		    
+　　　　　　　　　　　　// パーティクルの色を複数指定可能
+		    colors:["#F54064","#F5D940", "#18EBF2"], 
 
-		    text: "PARTICLE ♡", // 表示させたいテキスト
-
-		    colors:["#F54064","#F5D940", "#18EBF2"], // パーティクルの色を複数指定可能
-
-		    speed: "high",  // slow, middle, high の3つから選んでください。
+　　　　　　　　　　　　// イージングのスピード。slow, middle, high の3つから選んでください。
+		    speed: "high",  
 
 		});
 
