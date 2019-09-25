@@ -11,7 +11,7 @@ http://hareumi.girlfriend.jp/particleText/index2.html
 
 
 ## 1.描画するcanvasタグの準備
-id="particle"を指定。
+canvasタグに任意のidかclassを指定。
 
     <canvas id="particle"></canvas>
     
@@ -29,21 +29,23 @@ id="particle"を指定。
     <script src="particleText.js"></script>
     
 ## 3.実行方法
-particleText（）の（）の中に描画したい文字列を入れる。
+particleText（)の中に描画したい文字列を入れる。
 
     <script type="text/javascript">
 	$(function(){
 
 		// デフォルト
-		//$(".particle").particleText("PARTICLE");
+		//$(".particle").particleText("PARTICLE ♡");
 
 
 		// オプション
 		$("#particle").particleText({
 
-		    text: "PARTICLE", // 文字列
+		    text: "PARTICLE ♡", // 表示させたいテキスト
 
-		    colors:["#000","#fff"], // パーティクルの色を配列で複数指定可能
+		    colors:["#F54064","#F5D940", "#18EBF2"], // パーティクルの色を複数指定可能
+
+		    speed: "high",  // slow, middle, high の3つから選んでください。
 
 		});
 
@@ -52,3 +54,4 @@ particleText（）の（）の中に描画したい文字列を入れる。
     
     
 ※ メソッドチェーン非対応
+※ height: 300px;以上推奨！
