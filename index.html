@@ -5,15 +5,11 @@
 <title>particleText</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-
-
-
-canvas{
-	width:100vw;
-    height: 100vh;
+#particle{
+	width:100%;
+    height: 300px;
 	background: #F5F1E9;
 }
-
 
 </style>
 </head>
@@ -29,23 +25,24 @@ canvas{
 
 
 		// 一番シンプル
-		$("#particle").particleText("PARTICLE ♡");
+		//$("#particle").particleText("PARTICLE ♡");
 
 		//オプション付き
-		// $("#particle").particleText({
+		$("#particle").particleText({
 
-		//     //text: "PARTICLE ♡", // 文字
+		    text: "PARTICLE ♡", // 表示させたいテキスト
 
-		//     //colors:["#000","#fff"], // パーティクルの色を複数指定可能
+		    colors:["#F54064","#F5D940", "#18EBF2"], // パーティクルの色を複数指定可能
 
-		//     // min:1,  // パーティクルのサイズ 0.5 ~ 5 がおすすめ
+		    speed: "high",  // slow, middle, high の3つから選んでください。
 
-		//     // max:4,
-
-		// });
+		});
 
 
 	});
 </script>
+
+
+
 </body>
 </html>
