@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 #particle{
-	width:100%;
-    height: 300px;
+	width:100vw;
+    height: 100vh;
 	background: #F5F1E9;
 }
 
@@ -17,7 +17,7 @@
 
 <canvas id="particle"></canvas>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="particleText.js"></script>
+<script src="particleText.min.js"></script>
 
 
 <script type="text/javascript">
@@ -25,18 +25,18 @@
 
 
 		// 一番シンプル
-		//$("#particle").particleText("PARTICLE ♡");
+		$("#particle").particleText("PARTICLE ♡");
 
 		//オプション付き
-		$("#particle").particleText({
+		// $("#particle").particleText({
 
-		    text: "PARTICLE ♡", // 表示させたいテキスト
+		//     text: "PARTICLE ♡", // 表示させたいテキスト
 
-		    colors:["#F54064","#F5D940", "#18EBF2"], // パーティクルの色を複数指定可能
+		//     colors:["#F54064","#F5D940", "#18EBF2"], // パーティクルの色を複数指定可能
 
-		    speed: "high",  // slow, middle, high の3つから選んでください。
+		//     speed: "high",  // slow, middle, high の3つから選んでください。
 
-		});
+		// });
 
 
 	});
