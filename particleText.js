@@ -15,8 +15,6 @@
 			var ww = canvas.width = canvas.clientWidth;
 			var wh = canvas.height = canvas.clientHeight;
   			var text = "";
-  			var minSize = 2;
-  			var maxSize = 2;
   			var easing = 0.09;
 
   			if(options.speed){
@@ -39,6 +37,13 @@
   			if(options.colors){
   				colors = options.colors;
   			}
+
+  			var flg = false;
+  			if (text.indexOf("<br>") != -1) {
+  				flg = true;
+			}
+
+
 			var particles = [],num = 0;
 
 			function Particle(ax,ay){
@@ -48,13 +53,8 @@
 			        x : ax,
 			        y: ay
 			    };
-				var min = minSize;
-				var max = maxSize;
-			    this.r =  Math.floor( Math.random() * (max + 1 - min) ) + min ;
-			    this.r = canvas.clientWidth / this.r * 0.003;
+			    this.r = canvas.clientWidth / 4 * 0.003;
 			    this.color = colors[Math.floor(Math.random() * colors.length)];
-
-
 			}
 
 
@@ -72,31 +72,107 @@
 
 		
 			function initScene(){
+
 				var ww = canvas.width = canvas.clientWidth;
-			    var wh = canvas.height = canvas.clientHeight;
+				var wh = canvas.height = canvas.clientHeight;
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				var fSize = 10;
+				ctx.font = "bold "+(ww/fSize)+"px sans-serif";
+				ctx.textAlign = "center";
 
 
-			    ctx.clearRect(0, 0, canvas.width, canvas.height);
-			    ctx.font = "bold "+(ww/10)+"px sans-serif";
-			    var hp = 2;
-			    if(canvas.height <= 300 && canvas.width > 768){
-			    	hp = 1.5;
-			    }
-			    ctx.textAlign = "center";
-			    ctx.fillText(text, ww/2, wh/hp);
+				if(!flg){
+					drawOneText();
+				} else {
+					drawManyLineText();
+				}
+
+
+				function drawOneText(){
+					var hp = 2;
+				    if(canvas.height <= 300 && canvas.width > 768){
+				    	hp = 1.5;
+				    }
+				    ctx.fillText(text, ww/2, wh/hp, ww);
+				}
+
+
+				function drawManyLineText(){
+					
+				    var tagetString = text;
+					var br = "<br>";
+					var arrayStrig = tagetString.split("<br>");
+					var height = wh / arrayStrig.length;
+					var line = arrayStrig.length;
+					var _brakeP = 768;
+					// 2
+					if(line == 2){
+						if(canvas.width <= _brakeP){
+							var h = 0.6;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.3;
+							}
+						} else {
+							var h = 0.7;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.5;
+							}
+						}
+
+					}
+					// 3
+					if(line == 3){
+						if(canvas.width <= _brakeP){
+							var h = 0.8;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.4;
+							}
+						} else {
+							var h = 0.9;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.7;
+							}
+						}
+
+					}
+					// 4
+					if(line == 4){
+						if(canvas.width <= _brakeP){
+							var h = 1.0;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.5;
+							}
+						} else {
+							var h = 1.0;
+							for(var i = 0; i<arrayStrig.length; i++){
+								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
+								h+=0.8;
+							}
+						}
+					}
+				}
+			    
+			 	
 			    var data  = ctx.getImageData(0, 0, ww, wh).data;
 			    ctx.clearRect(0, 0, canvas.width, canvas.height);
 			    ctx.globalCompositeOperation = "source-over";
 
 			    
 			    particles = [];
-			    for(var i=0; i<ww; i+=Math.round(ww/300)){
-			        for(var j=0;j<wh; j+=Math.round(ww/300)){
+
+			    for(var i=0; i<ww; i+=Math.round(ww/200)){
+			        for(var j=0;j<wh; j+=Math.round(ww/200)){
 			            if(data[ ((i + j*ww)*4) + 3] > 150){
 			                particles.push(new Particle(i,j));
 			            }
 			        }
 			    }
+
 			    num = particles.length;
 			    
 			}
