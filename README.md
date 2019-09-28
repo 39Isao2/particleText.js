@@ -51,10 +51,17 @@ particleText（)の中に描画したい文字列を入れる。
 		    speed: "high",  
 
 		 });
+		 
+		 // 改行させたい場合
+		 $("#particle").particleText({
+		        // <br>の文字列を入れてください、４行くらいはいけるはず...
+		        text: "LOVE<br>AND<br>PEACE",
+		 });
 
 	});
     </script>
     
     
 ※ メソッドチェーン非対応
+
 ※ height: 300px;以上推奨！
