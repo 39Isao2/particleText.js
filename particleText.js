@@ -53,7 +53,7 @@
 			        x : ax,
 			        y: ay
 			    };
-			    this.r = canvas.clientWidth / 3 * 0.003;
+			    this.r = canvas.clientWidth / 2 * 0.003;
 			    this.color = colors[Math.floor(Math.random() * colors.length)];
 			}
 
