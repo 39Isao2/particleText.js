@@ -53,7 +53,7 @@
 			        x : ax,
 			        y: ay
 			    };
-			    this.r = canvas.clientWidth / 4 * 0.003;
+			    this.r = canvas.clientWidth / 3 * 0.003;
 			    this.color = colors[Math.floor(Math.random() * colors.length)];
 			}
 
@@ -105,55 +105,11 @@
 					var height = wh / arrayStrig.length;
 					var line = arrayStrig.length;
 					var _brakeP = 768;
-					// 2
-					if(line == 2){
-						if(canvas.width <= _brakeP){
-							var h = 0.6;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.3;
-							}
-						} else {
-							var h = 0.7;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.5;
-							}
-						}
 
-					}
-					// 3
-					if(line == 3){
-						if(canvas.width <= _brakeP){
-							var h = 0.8;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.4;
-							}
-						} else {
-							var h = 0.9;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.7;
-							}
-						}
-
-					}
-					// 4
-					if(line == 4){
-						if(canvas.width <= _brakeP){
-							var h = 1.0;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.5;
-							}
-						} else {
-							var h = 1.0;
-							for(var i = 0; i<arrayStrig.length; i++){
-								ctx.fillText(arrayStrig[i], ww/2, height * h, ww);
-								h+=0.8;
-							}
-						}
+					var h = 0.8;
+					for(var i = 0; i<arrayStrig.length; i++){
+						ctx.fillText(arrayStrig[i], ww/2, height * h);
+						h+= (ww/1300);
 					}
 				}
 			    
