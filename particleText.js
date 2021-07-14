@@ -61,7 +61,7 @@
 	
 			Particle.prototype.render = function() {
 				this.x += (this.goal.x - this.x) * easing;
-			    this.y += (this.goal.y - this.y) * easing;
+			        this.y += (this.goal.y - this.y) * easing;
 				ctx.fillStyle = this.color;
 			    ctx.beginPath();
 				ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
